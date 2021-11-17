@@ -60,6 +60,11 @@ public class Owner extends Person {
 	@Digits(fraction = 0, integer = 10)
 	private String telephone;
 
+	@Column(name = "zipcode")
+	@NotEmpty
+	@Digits(integer = 10, fraction = 0)
+	private String zipcode;
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "owner", fetch = FetchType.EAGER)
 	private Set<Pet> pets;
 
@@ -148,4 +153,11 @@ public class Owner extends Person {
 				.append("telephone", this.telephone).toString();
 	}
 
+	public String getZipcode() {
+		return zipcode;
+	}
+
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
 }
