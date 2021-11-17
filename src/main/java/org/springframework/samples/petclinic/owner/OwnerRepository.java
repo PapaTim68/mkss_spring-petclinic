@@ -15,8 +15,10 @@
  */
 package org.springframework.samples.petclinic.owner;
 
+import org.hibernate.annotations.Cascade;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
@@ -61,6 +63,12 @@ public interface OwnerRepository extends Repository<Owner, Integer> {
 	 * @param owner the {@link Owner} to save
 	 */
 	void save(Owner owner);
+
+
+	@Modifying
+	@Query("delete from Owner o where o.id = :id")
+	@Transactional
+	void deleteOwnerById(@Param("id") Integer id);
 
 	/**
 	 * Returnes all the owners from data store
