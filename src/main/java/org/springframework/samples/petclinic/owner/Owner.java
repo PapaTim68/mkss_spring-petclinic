@@ -160,4 +160,5 @@ public class Owner extends Person {
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
+
 }

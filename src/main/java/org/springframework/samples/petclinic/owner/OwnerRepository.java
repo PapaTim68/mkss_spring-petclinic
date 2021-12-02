@@ -64,7 +64,6 @@ public interface OwnerRepository extends Repository<Owner, Integer> {
 	 */
 	void save(Owner owner);
 
-
 	@Modifying
 	@Query("delete from Owner o where o.id = :id")
 	@Transactional
